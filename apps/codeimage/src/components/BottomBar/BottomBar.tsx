@@ -30,7 +30,7 @@ export const BottomBar: ParentComponent<BottomBarProps> = props => {
       <Button
         class={styles.button}
         variant={'link'}
-        onClick={() => setMode('themes')}
+        onPress={() => setMode('themes')}
       >
         <ColorSwatchIcon />
         <Box as={'span'}>{t('bottomBar.themes')}</Box>
@@ -39,7 +39,7 @@ export const BottomBar: ParentComponent<BottomBarProps> = props => {
       <Button
         class={styles.button}
         variant={'link'}
-        onClick={() => setMode('style')}
+        onPress={() => setMode('style')}
       >
         <SparklesIcon />
         <Box as={'span'}>{t('bottomBar.styles')}</Box>
@@ -48,7 +48,7 @@ export const BottomBar: ParentComponent<BottomBarProps> = props => {
       <Button
         class={styles.button}
         variant={'link'}
-        onClick={() => setMode('editor')}
+        onPress={() => setMode('editor')}
       >
         <CodeIcon />
         {t('bottomBar.editor')}
@@ -65,7 +65,7 @@ export const BottomBar: ParentComponent<BottomBarProps> = props => {
                     variant={'solid'}
                     theme={'secondary'}
                     pill
-                    onClick={() => setMode(null)}
+                    onPress={() => setMode(null)}
                   >
                     <CloseIcon size={'sm'} />
                   </Button>

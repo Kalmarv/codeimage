@@ -42,18 +42,10 @@ interface ExportButtonProps {
 }
 
 export const ExportButton: Component<ExportButtonProps> = props => {
-  let openButtonRef: HTMLButtonElement | undefined;
   const snackbarStore = useSnackbarStore();
   const [t] = useI18n<AppLocaleEntries>();
   const modality = useModality();
   const overlayState = createOverlayTriggerState({});
-
-  const {buttonProps: openButtonProps} = createButton(
-    {
-      onPress: () => overlayState.open(),
-    },
-    () => openButtonRef,
-  );
 
   const [data, notify] = useExportImage();
 
@@ -82,11 +74,10 @@ export const ExportButton: Component<ExportButtonProps> = props => {
   return (
     <>
       <Button
-        {...openButtonProps}
-        ref={openButtonRef}
         variant={'solid'}
         theme={'primary'}
-        disabled={data.loading}
+        isDisabled={data.loading}
+        onPress={() => overlayState.open()}
       >
         <DownloadIcon />
 
@@ -328,7 +319,7 @@ export function ExportDialog(props: DialogProps & ExportDialogProps) {
             type="button"
             variant={'solid'}
             theme={'secondary'}
-            onClick={() => props.onClose?.()}
+            onPress={() => props.onClose?.()}
           >
             {t('common.close')}
           </Button>
@@ -338,7 +329,7 @@ export function ExportDialog(props: DialogProps & ExportDialogProps) {
             size={'md'}
             type="submit"
             variant={'solid'}
-            onClick={onConfirm}
+            onPress={onConfirm}
           >
             {t('common.confirm')}
           </Button>
